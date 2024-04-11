@@ -81,4 +81,17 @@ app.get('/add-products-external', async (req, res) => {
     });
 });
 
+//Update single Product
+app.get('/update', async (req, res) => {
+    shopify.product
+        .update(9210771439900, {
+            title: "new prodcut title",
+            status: "draft"
+
+        })
+        .then(product => res.send(product))
+        .catch((err) => console.error(err))
+
+});
+
 app.listen(5000);
